@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -8,6 +7,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
       TextStyle style = TextStyle(fontFamily: 'Roboto', fontSize: 20.0);
+      TextEditingController _emailController, _passwordController;
 
       @override
       Widget build(BuildContext context) {
@@ -15,6 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final emailField = TextField(
           obscureText: false,
           style: style,
+          controller: _emailController,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               hintText: "Email",
@@ -26,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final passwordField = TextField(
           obscureText: true,
           style: style,
+          controller: _passwordController,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               hintText: "Password",
@@ -41,7 +43,9 @@ class _LoginScreenState extends State<LoginScreen> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed('/home');
+            },
             child: Text("Login",
                 textAlign: TextAlign.center,
                 style: style.copyWith(
